@@ -49,10 +49,14 @@ Crie um arquivo `.env.local` na raiz do projeto:
 
 ```bash
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+SEED_USER_EMAIL=admin@test.com
+SEED_USER_PASSWORD=admin123
 ```
 
 **Variáveis de ambiente:**
 - `NEXT_PUBLIC_API_BASE_URL` - URL base da API backend (padrão: http://localhost:3000)
+- `SEED_USER_EMAIL` - Email do usuário para testes (padrão: admin@test.com)
+- `SEED_USER_PASSWORD` - Senha do usuário para testes (padrão: admin123)
 
 ## Execução Local
 

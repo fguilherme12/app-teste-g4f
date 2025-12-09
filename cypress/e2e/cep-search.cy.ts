@@ -1,6 +1,9 @@
 describe('Feature: Address Search by ZIP Code', () => {
+  const email = Cypress.env('SEED_USER_EMAIL') || 'admin@test.com';
+  const password = Cypress.env('SEED_USER_PASSWORD') || 'admin123';
+
   beforeEach(() => {
-    cy.login('guilhermeee314@gmail.com', 'Chico$314');
+    cy.login(email, password);
     cy.visit('/cep');
     cy.url().should('include', '/cep');
   });

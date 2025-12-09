@@ -1,9 +1,25 @@
 import { api } from '@/lib/http';
-import type { News, CreateNewsRequest, UpdateNewsRequest } from '@/types/news';
+import type {
+  News,
+  CreateNewsRequest,
+  UpdateNewsRequest,
+  ListNewsFilters,
+  ListNewsResponse,
+} from '@/types/news';
 
 export class NewsService {
-  public static async list(): Promise<News[]> {
-    const response = await api.get<News[]>('/news');
+  public static async list(filters?: ListNewsFilters): Promise<ListNewsResponse> {
+    const params = new URLSearchParams();
+    
+    if (filters?.page) params.append('page', filters.page.toString());
+    if (filters?.limit) params.append('limit', filters.limit.toString());
+    if (filters?.title) params.append('title', filters.title);
+    if (filters?.description) params.append('description', filters.description);
+
+    const queryString = params.toString();
+    const url = queryString ? `/news?${queryString}` : '/news';
+    
+    const response = await api.get<ListNewsResponse>(url);
     return response.data;
   }
 

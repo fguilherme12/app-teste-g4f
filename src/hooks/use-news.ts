@@ -1,12 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { NewsService } from '@/services/news.service';
-import type { News, CreateNewsRequest, UpdateNewsRequest } from '@/types/news';
+import type {
+  CreateNewsRequest,
+  UpdateNewsRequest,
+  ListNewsFilters,
+} from '@/types/news';
 import { toast } from 'sonner';
 
-export function useNews() {
+export function useNews(filters?: ListNewsFilters) {
   return useQuery({
-    queryKey: ['news'],
-    queryFn: () => NewsService.list(),
+    queryKey: ['news', filters],
+    queryFn: () => NewsService.list(filters),
   });
 }
 

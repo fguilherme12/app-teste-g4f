@@ -9,6 +9,10 @@ export default defineConfig({
     viewportHeight: 720,
     video: false,
     screenshotOnRunFailure: true,
+    env: {
+      SEED_USER_EMAIL: process.env.SEED_USER_EMAIL || 'admin@test.com',
+      SEED_USER_PASSWORD: process.env.SEED_USER_PASSWORD || 'admin123',
+    },
     setupNodeEvents() {
     },
   },

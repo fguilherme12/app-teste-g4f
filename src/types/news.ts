@@ -17,3 +17,24 @@ export interface UpdateNewsRequest {
   description?: string;
 }
 
+export interface ListNewsFilters {
+  page?: number;
+  limit?: number;
+  title?: string;
+  description?: string;
+}
+
+export interface PaginationMeta {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+}
+
+export interface ListNewsResponse {
+  data: News[];
+  meta: PaginationMeta;
+}
+
